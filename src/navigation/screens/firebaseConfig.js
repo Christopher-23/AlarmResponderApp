@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 // Optionally import the services that you want to use
 // import {...} from "firebase/auth";
 // import {...} from "firebase/database";
-// import {...} from "firebase/firestore";
+ import {getFirestore, setDoc, doc } from "firebase/firestore";
 // import {...} from "firebase/functions";
 // import {...} from "firebase/storage";
 
@@ -18,6 +18,12 @@ const firebaseConfig = {
     measurementId: "G-01Z8SFG290"
 };
 
-const app = initializeApp(firebaseConfig);
-// For more information on how to access Firebase in your project,
-// see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
+initializeApp(firebaseConfig);
+const  firestore = getFirestore();
+
+await setDoc(doc(firestore, "characters", "mario"), {
+    employment: "plumber",
+    outfitColor: "red",
+    specialAttack: "fireball"
+
+});
